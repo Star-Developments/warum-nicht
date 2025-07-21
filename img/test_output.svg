@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="450" height="150">
+  <rect width="450" height="150" fill="#1e1e1e" />
+  <text x="10" y="25" font-family="monospace" font-size="14" fill="#ffffff">$ exe/release/WarumNicht.exe test.wn</text>
+  <text x="10" y="50" font-family="monospace" font-size="14" fill="#00ff00">11</text>
+  <text x="10" y="70" font-family="monospace" font-size="14" fill="#00ff00">2.5</text>
+  <text x="10" y="90" font-family="monospace" font-size="14" fill="#00ff00">2.5</text>
+  <text x="10" y="110" font-family="monospace" font-size="14" fill="#00ff00">3.25</text>
+</svg>
