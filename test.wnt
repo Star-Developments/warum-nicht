@@ -1,0 +1,6 @@
+AssignMath("x", [Zahl(5), Plus, Zahl(3), Stern, Zahl(2)], "int")
+PrintVar("x")
+AssignMath("y", [KlammerAuf, Float(2.5), Plus, Float(2.5), KlammerZu, Slash, Zahl(2)], "fl")
+PrintVar("y")
+AssignLiteral("name", "Hallo", "string")
+PrintVar("name")

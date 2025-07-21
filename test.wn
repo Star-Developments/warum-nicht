@@ -1,0 +1,8 @@
+int x = 5 + 3 * 2;
+ausgabe x;
+
+fl y = (2.5 + 2.5) / 2;
+ausgabe y;
+
+string name = "Hallo";
+ausgabe name;
