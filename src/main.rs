@@ -80,12 +80,18 @@ fn run_ast(ast: &[parser::ASTNode], env: &mut HashMap<String, VarValue>) {
                     }
                 }
             }
+            parser::ASTNode::IfBlock(cond, then_body, else_body) => {
+                if eval_condition(cond, env) {
+                    run_ast(then_body, env);
+                } else if let Some(else_b) = else_body {
+                    run_ast(else_b, env);
+                }
+            }
         }
     }
 }
 
 fn eval_math(expr: &[lexer::Token], env: &HashMap<String, VarValue>) -> f64 {
-    // Shunting-Yard: Infix -> Postfix
     let mut output = Vec::new();
     let mut ops = Vec::new();
 
@@ -119,7 +125,6 @@ fn eval_math(expr: &[lexer::Token], env: &HashMap<String, VarValue>) -> f64 {
         output.push(op);
     }
 
-    // Postfix auswerten
     let mut stack: Vec<f64> = Vec::new();
     for token in output {
         match token {
@@ -148,5 +153,27 @@ fn precedence(token: &lexer::Token) -> i32 {
         lexer::Token::Stern | lexer::Token::Slash => 2,
         lexer::Token::Plus | lexer::Token::Minus => 1,
         _ => 0,
+    }
+}
+
+fn eval_condition(cond: &(String, String, String), env: &HashMap<String, VarValue>) -> bool {
+    let l_val = get_num(&cond.0, env);
+    let r_val = get_num(&cond.2, env);
+    match cond.1.as_str() {
+        ">" => l_val > r_val,
+        "<" => l_val < r_val,
+        ">=" => l_val >= r_val,
+        "<=" => l_val <= r_val,
+        "==" => l_val == r_val,
+        "!=" => l_val != r_val,
+        _ => false,
+    }
+}
+
+fn get_num(key: &str, env: &HashMap<String, VarValue>) -> f64 {
+    match env.get(key) {
+        Some(VarValue::Int(n)) => *n as f64,
+        Some(VarValue::Float(f)) => *f,
+        _ => key.parse::<f64>().unwrap_or(0.0),
     }
 }

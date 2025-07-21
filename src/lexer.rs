@@ -4,7 +4,7 @@ pub enum Token {
     Zahl(i64),
     Float(f64),
     StringLiteral(String),
-    Typ(String),           // int, fl, string
+    Typ(String),
     Ausgabe,
     Gleich,
     Plus,
@@ -16,6 +16,11 @@ pub enum Token {
     Semikolon,
     KlammerAuf,
     KlammerZu,
+    BlockStart,
+    BlockEnd,
+    Wenn,
+    Sonst,
+    Vergleich(String),
 }
 
 pub fn lex(source: &str) -> Vec<Token> {
@@ -37,10 +42,21 @@ pub fn lex(source: &str) -> Vec<Token> {
             continue;
         }
 
-        // Manuelle Tokenisierung (trennt Klammern und Semikolons korrekt)
         let mut buffer = String::new();
         for ch in line.chars() {
             match ch {
+                '{' => {
+                    if !buffer.trim().is_empty() {
+                        process_word(&mut buffer, &mut tokens);
+                    }
+                    tokens.push(Token::BlockStart);
+                }
+                '}' => {
+                    if !buffer.trim().is_empty() {
+                        process_word(&mut buffer, &mut tokens);
+                    }
+                    tokens.push(Token::BlockEnd);
+                }
                 '(' => {
                     if !buffer.trim().is_empty() {
                         process_word(&mut buffer, &mut tokens);
@@ -82,6 +98,8 @@ fn process_word(word_buf: &mut String, tokens: &mut Vec<Token>) {
 
     match word.as_str() {
         "ausgabe" => tokens.push(Token::Ausgabe),
+        "wenn" => tokens.push(Token::Wenn),
+        "sonst" => tokens.push(Token::Sonst),
         "int" | "fl" | "string" => tokens.push(Token::Typ(word.clone())),
         "=" => tokens.push(Token::Gleich),
         "++" => tokens.push(Token::PlusPlus),
@@ -90,6 +108,7 @@ fn process_word(word_buf: &mut String, tokens: &mut Vec<Token>) {
         "-" => tokens.push(Token::Minus),
         "*" => tokens.push(Token::Stern),
         "/" => tokens.push(Token::Slash),
+        ">" | "<" | ">=" | "<=" | "==" | "!=" => tokens.push(Token::Vergleich(word.clone())),
         "" => {}
         _ => {
             if word.starts_with('"') && word.ends_with('"') {
