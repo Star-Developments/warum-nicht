@@ -1,4 +1,0 @@
-AssignLiteral("x", "3", "int")
-IfBlock(("x", ">", "0"), [PrintVar("\"x"), PrintVar("\"x")], None)
-PrintVar("\"x")
-PrintVar("\"x")

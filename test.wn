@@ -1,8 +1,33 @@
-int x = 3;
+</> Typen testen
+int a = 10;
+ausgabe a;
 
-wenn (x > 1) {
-    ausgabe "x ist größer als 1!";
-}
-sonst {
-    ausgabe "x ist kleiner oder gleich 1!";
-}
+fl b = 2.5;
+ausgabe b;
+
+string name = "Test";
+ausgabe name;
+
+</> Mathe mit Operator-Priorität und Klammern
+int x = 5 + 3 * 2;
+ausgabe x;
+
+fl y = (2.5 + 2.5) / 2;
+ausgabe y;
+
+fl z = 10 / 4;
+ausgabe z;
+
+</> Verschachtelte Klammern
+fl calc = ((1 + 2) * (3 + 4)) / 2;
+ausgabe calc;
+
+</>
+int c = 4;
+fl d = 2.5;
+fl res = (c + d) / 2;
+ausgabe res;
+
+</> Strings bleiben unberührt
+string s = "Hallo Welt";
+ausgabe s;
