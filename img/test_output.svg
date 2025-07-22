@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="160" font-family="monospace">
+  <rect width="520" height="160" fill="#1e1e1e" />
+  <text x="10" y="24" fill="#c5c5c5">$ exe/release/WarumNicht.exe test.wn</text>
+  <text x="10" y="48" fill="#00ff00">11</text>
+  <text x="10" y="68" fill="#00ff00">2.5</text>
+  <text x="10" y="88" fill="#00ff00">2.5</text>
+  <text x="10" y="108" fill="#00ff00">3.25</text>
+  <text x="10" y="128" fill="#00ff00">Hallo Welt</text>
+</svg>
