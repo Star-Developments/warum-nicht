@@ -2,9 +2,13 @@
 
 ![Logo](WarumNicht.ico)
 
-![Build](https://img.shields.io/badge/build-passing-brightgreen) ![Rust](https://img.shields.io/badge/rust-2024-orange) ![Status](https://img.shields.io/badge/status-experimental-lightgrey)
+![Build](https://img.shields.io/badge/build-passing-brightgreen)
+![Rust](https://img.shields.io/badge/rust-2024-orange)
+![Status](https://img.shields.io/badge/status-experimental-lightgrey)
+![PRs](https://img.shields.io/badge/PRs-welcome-blue)
 
 Ein kleines Experiment einer eigenen Programmiersprache. Das Repository enthaelt einen simplen Lexer, Parser und eine minimale Laufzeitumgebung in Rust.
+Diese Spielwiese dient dazu, neue Sprachfeatures schnell auszuprobieren und gemeinsam weiterzuentwickeln.
 
 ## Inhaltsverzeichnis
 - [Features](#features)
@@ -42,6 +46,14 @@ Das fertige Binary findest du unter `target/release`. Die Tests startest du mit:
 ```bash
 cargo test --quiet
 ```
+
+### Entwicklungs-Stack
+
+| Komponente | Beschreibung |
+|-----------|--------------|
+| Rust | Compiler, Lexer und Runtime |
+| Cargo | Build- und Paketmanagement |
+| MinGW | Erzeugt Windows-Binaries |
 
 ## Stack-Überblick
 
